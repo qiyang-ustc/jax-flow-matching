@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
     print("\n========== Prepare logs ==========")
 
-    path = args.folder + "n_%d_dim_%d_beta_%g_lr_%g" % (args.n, args.dim, args.beta, args.lr) \
+    path = args.folder + "/n_%d_dim_%d_beta_%g_lr_%g" % (args.n, args.dim, args.beta, args.lr) \
                        + "_" + modelname
     os.makedirs(path, exist_ok=True)
     print("Create directory: %s" % path)
