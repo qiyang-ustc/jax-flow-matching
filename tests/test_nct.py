@@ -1,7 +1,7 @@
 from config import * 
 
 from nct import make_canonical_transformation
-from net import make_hamiltonian_net
+from network.net import make_hamiltonian_net
 
 def test_reversibility():
 

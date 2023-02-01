@@ -1,8 +1,8 @@
 import jax
 import jax.numpy as jnp
 import haiku as hk
-from backflow import Backflow
-from transformer import Transformer
+from network.backflow import Backflow
+from network.transformer import Transformer
 
 def Sequential(*args):
     """ Wrapped to mimic pytorch syntax"""
@@ -23,9 +23,9 @@ def MLP_with_t(n, spatial_dim, ch=384, num_layers=3):
 def make_hamiltonian_net(rng, n, spatial_dim, ch=512, num_layers=2):
 
     model = MLP_with_t(n, spatial_dim, ch, num_layers)
-
     def hamiltonian_net(p, q, t):
         input = jnp.concatenate((p, q, t.reshape(1)))
+        # input = jnp.concatenate((p, q, jnp.cos(jnp.arange(10)*t))) # Does not work
         return model(input).sum()
 
     net = hk.without_apply_rng(hk.transform(hamiltonian_net))

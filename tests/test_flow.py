@@ -1,7 +1,7 @@
 from config import * 
 from pt import make_point_transformation
 from flow import make_symplectic_flow
-from net import make_transformer
+from network.net import make_transformer
 
 def test_logp():
 

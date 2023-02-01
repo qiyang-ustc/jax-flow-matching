@@ -5,8 +5,8 @@ import haiku as hk
 import os
 from typing import NamedTuple
 import itertools
+import utils.checkpoint as checkpoint
 
-import checkpoint
 
 class TrainingState(NamedTuple):
     params: hk.Params
@@ -19,7 +19,7 @@ def train(key, value_and_grad, num_epochs, batchsize, params, data, lr, path, be
     @jax.jit
     def step(key, i, state, x1):
         key, subkey_x0, subkey_t = jax.random.split(key, 3)
-        x0 = jax.random.normal(subkey_x0, x1.shape)
+        x0 = 1.0*jax.random.normal(subkey_x0, x1.shape)
         t = jax.random.uniform(subkey_t, (batchsize,))
         
         value, grad = value_and_grad(state.params, x0, x1, t)

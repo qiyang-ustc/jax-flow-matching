@@ -11,7 +11,7 @@ def make_energy(n, dim):
         i, j = jnp.triu_indices(n, k=1)
         r_ee = jnp.linalg.norm((jnp.reshape(q, (n, 1, dim)) - jnp.reshape(q, (1, n, dim)))[i,j], axis=-1)
         v_ee = jnp.sum(1/r_ee)
-        return jnp.sum(q**2) + v_ee
+        return jnp.sum(q**2) + 0.0*v_ee
     
     def energy(x):
         assert x.size == 2*n*dim

@@ -4,11 +4,11 @@ from jax.config import config
 config.update("jax_enable_x64", True)
 
 from data import sample_target
-from net import make_hamiltonian_net, make_backflow, make_transformer
+from network.net import make_hamiltonian_net, make_backflow, make_transformer
 from loss import make_loss
 from energy import make_energy
 from train import train
-import checkpoint
+import utils.checkpoint as checkpoint
 
 import os
 import time

@@ -11,4 +11,5 @@ def sample_target(key, batchsize, n, dim, logp, mc_epoch=20, mc_steps=100, mc_wi
     for _ in range(mc_epoch):
         key, subkey = jax.random.split(key)
         x, acc = mcmc_fun(subkey, logp, x, mc_steps, mc_width)
+    x = 0.10*x + 10.0
     return x
